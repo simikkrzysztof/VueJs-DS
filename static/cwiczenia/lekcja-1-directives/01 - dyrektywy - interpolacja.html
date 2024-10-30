@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpolacja</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="../../css/vuejs.css">
+
+</head>
+
+<body>
+    <div id="app" v-cloak>
+          <h1>{{ title }}</h1>
+        <p>{{para}}</p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+
+            data() {
+                return {
+                    title: "01: Dyrektywy VueJS",
+                    para: "Interpolacja danych z obiektu data - w podwójnych nawiasach {{ }} oraz aktualizacja wartości po ich zmianie"
+                }
+            }
+        }).mount("#app")
+
+
+
+    </script>
+
+</body>
+
+</html>

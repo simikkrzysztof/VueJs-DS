@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div id="mainDiv"></div>
+    <script>
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+
+        fetch("/aaa", options)
+            .then(response => response.json()) // konwersja na obiekt json, jeśli konieczne
+            .then(dataFromServer => {
+                {
+                    console.log(dataFromServer)
+                    // .dirdata[1][0]
+                    // const p1 = document.createElement("p");
+                    // p1.innerText = "lekcja - 1 - directives";
+                    // document.getElementById("mainDiv").append(p1)
+
+                    for (let j = 0; j < dataFromServer.dirdata[0].length; j++) {
+                        // console.log(j);
+                        const d1 = document.createElement("div");
+                        d1.id = "div" + [j];
+                        const p1 = document.createElement("h2");
+                        p1.innerText = dataFromServer.dirdata[0][j];
+                        // "Folder " + [j]; 
+                        d1.append(p1)
+                        document.getElementById("mainDiv").append(d1)
+
+
+                    }
+                    for (let index = 0; index < dataFromServer.dirdata[1].length; index++) {
+                        console.log(dataFromServer.dirdata[1].length);
+
+                        for (let k = 0; k < dataFromServer.dirdata[1][index].length; k++) {
+                            const para = document.createElement("a");
+                            para.href = dataFromServer.dirdata[1][index][k];
+                            para.innerText = dataFromServer.dirdata[1][index][k];
+                            console.log(para)
+                            document.getElementById("div" + index).append(para)
+                        }
+
+                    }
+
+                }
+            }) // sformatowane z wcięciami dane odpowiedzi z serwera
+            .catch(error => console.log(error));
+    </script>
+
+</body>
+
+</html>
